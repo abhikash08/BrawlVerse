@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph;
+using Photon.Pun;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerStateMachine : MonoBehaviour
+public class PlayerStateMachine : MonoBehaviourPun
 {
     private PlayerControls _playerControls;
     
     private float turnVelocity;
+
+    [Header("Player Name")]
+    public string PlayerName;
+    public TextMeshPro PlayerNameText;
 
     [Header("Character Controller")]
     public CharacterController characterController;
@@ -30,8 +35,9 @@ public class PlayerStateMachine : MonoBehaviour
     public Transform groundCheck;
     public LayerMask gLayer;
 
-    [Header("Enemy Layer")]
+    [Header("Enemy and Player Layer")]
     public LayerMask EnemyLayer;
+    public LayerMask PlayerLayer;
 
     [Header("Attack Data")]
     public List<AttackData> attacks;
@@ -82,12 +88,13 @@ public class PlayerStateMachine : MonoBehaviour
     private PlayerBaseState currentState;
     private PlayerStateFactory stateFactory;
 
+
     // ------------------------ Awake method ---------------------------
     void Awake()
     {
         InitializeControls();
         cam = Camera.main;
-        animator.applyRootMotion = true;
+        //animator.applyRootMotion = true;
         runtimeOverride = new AnimatorOverrideController(baseOverrideController);
         animator.runtimeAnimatorController = runtimeOverride;
 
@@ -97,8 +104,39 @@ public class PlayerStateMachine : MonoBehaviour
         stateFactory = new PlayerStateFactory(this);
         currentState = stateFactory.Idle();
         currentState.EnterState();
+
+        // Photon Setup
+        if (photonView.IsMine)
+        {
+            cam = Camera.main;
+            enabled = true;
+            
+        }
+        else 
+        {
+            enabled = false;
         
+        }
+        int targetLayer = photonView.IsMine ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+
+        SetLayerRecursively(gameObject, targetLayer);
     }
+    void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        obj.layer = newLayer;
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
+    }
+
+    [PunRPC]
+    public void SetPlayerName(string _name)
+    {
+        PlayerName = _name;
+        PlayerNameText.text = PlayerName;
+    }
+
     // ----------------- Setting up attack Maps -----------------------------
     void SetUpAttackMaps()
     {

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState
@@ -53,9 +54,10 @@ public class PlayerAttackState : PlayerBaseState
             /*---------------------------------------------------------------------*/
             
             // Apply damage
-
-            if (hit.TryGetComponent<EnemyHealth>(out var health))
-                health.TakeDamage(data.damage);
+            if (hit.TryGetComponent<PlayerHealth>(out var health))
+            {
+                health.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, data.damage);
+            }
         
             // Apply force if it has Rigidbody
         

@@ -156,7 +156,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -222,7 +222,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.851, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5930814930587839236}
@@ -3052,7 +3052,7 @@ GameObject:
   - component: {fileID: 2127233754}
   - component: {fileID: 2127233758}
   - component: {fileID: 2127233759}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3215,13 +3215,18 @@ PrefabInstance:
       objectReference: {fileID: 1548547199}
     - target: {fileID: 2705335463556240373, guid: aa90ce0505739de48888381f1cb477bf,
         type: 3}
+      propertyPath: EnemyLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705335463556240373, guid: aa90ce0505739de48888381f1cb477bf,
+        type: 3}
       propertyPath: bubbleShieldEffect
       value: 
       objectReference: {fileID: 118391734}
     - target: {fileID: 2705335463556240373, guid: aa90ce0505739de48888381f1cb477bf,
         type: 3}
       propertyPath: pushableLayer.m_Bits
-      value: 2048
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 4288524702216589182, guid: aa90ce0505739de48888381f1cb477bf,
         type: 3}
@@ -3278,6 +3283,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5106737253385524561, guid: aa90ce0505739de48888381f1cb477bf,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8273347534387816858, guid: aa90ce0505739de48888381f1cb477bf,
         type: 3}
       propertyPath: m_Name
@@ -3285,6 +3295,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4369927470634395700, guid: aa90ce0505739de48888381f1cb477bf, type: 3}
+    - {fileID: 5106737253385524561, guid: aa90ce0505739de48888381f1cb477bf, type: 3}
+    - {fileID: 3573374120915759386, guid: aa90ce0505739de48888381f1cb477bf, type: 3}
+    - {fileID: 2661626697315196237, guid: aa90ce0505739de48888381f1cb477bf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4288524702216589182, guid: aa90ce0505739de48888381f1cb477bf,
