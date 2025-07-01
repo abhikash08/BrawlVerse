@@ -1,22 +1,26 @@
+using System.Collections;
+using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviourPun
 {
     public float health = 100f;
-    public ShieldController shieldController;  // Reference to your existing shield script
-
+    public PlayerStateMachine _playerStateMachine;  // Reference to your existing shield script
+    public bool isLocalPlayer;
     void Start()
     {
-        if (shieldController == null)
+        if (_playerStateMachine == null)
         {
-            shieldController = GetComponent<ShieldController>(); // Try auto-assign if on same object
+            _playerStateMachine = GetComponent<PlayerStateMachine>(); // Try auto-assign if on same object
         }
     }
 
-    public void TakeDamage(float damageAmount)
+    [PunRPC]
+    public void TakeDamage(int damageAmount)
     {
         // If shield active, ignore damage
-        if (shieldController != null && shieldController.IsShieldActive)
+        if (_playerStateMachine != null && _playerStateMachine.isShieldActive)
         {
             Debug.Log("Shield is active! No damage taken.");
             return;
@@ -27,13 +31,26 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            Debug.Log("Player died!");
             Die();
+            if (isLocalPlayer) RoomManager.Instance.SpawnPlayer();
+            Destroy(gameObject);
         }
     }
 
     void Die()
     {
-        Debug.Log("Player died!");
-        // Your death logic here
+        if (photonView.IsMine)
+        {
+            StartCoroutine(RespawnAfterDelay(5f));
+            if(gameObject != null ) PhotonNetwork.Destroy(gameObject);
+            
+        }
+    }
+
+    IEnumerator RespawnAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        FindObjectOfType<RoomManager>().SpawnPlayer();
     }
 }

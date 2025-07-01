@@ -9,7 +9,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     public GameObject player;
     public Transform spanPoint;
-    public CinemachineFreeLook virtualCam;
+    public Cinemachine virtualCam;
     void Start()
     {
         Debug.Log(message:"Connecting. . . ");

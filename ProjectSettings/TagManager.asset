@@ -8,6 +8,12 @@ TagManager:
   - Sofa
   - Chair
   - Stand_Table
+  - Water
+  - Wine
+  - Food
+  - Cart
+  - Item
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -16,8 +22,8 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
-  - 
+  - cart
+  - Player
   - 
   - 
   - 
