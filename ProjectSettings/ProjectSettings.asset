@@ -681,10 +681,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 69be249b-3d03-4b84-8aa6-9b0181a549be
+
+  cloudProjectId: e098e1c9-433f-4a6e-b271-a8af7ec5d617
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BrawlVerse
+  projectName: BrawlVerse 2025-07-01_23-16-03
   organizationId: aks4212
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
