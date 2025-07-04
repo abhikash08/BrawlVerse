@@ -3878,6 +3878,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5106737253385524561, guid: aa90ce0505739de48888381f1cb477bf,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8273347534387816858, guid: aa90ce0505739de48888381f1cb477bf,
         type: 3}
       propertyPath: m_Name
@@ -3891,7 +3896,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 118391738}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4236134560774318813, guid: aa90ce0505739de48888381f1cb477bf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: aa90ce0505739de48888381f1cb477bf, type: 3}
 --- !u!4 &5930814930587839236 stripped
 Transform:
