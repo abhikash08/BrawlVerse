@@ -11778,7 +11778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1289024380
 Light:
   m_ObjectHideFlags: 0
@@ -15815,7 +15815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2dd3a6595272e4395e2bd917b04c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8273347534387816858, guid: aa90ce0505739de48888381f1cb477bf, type: 3}
+  player: {fileID: 8273347534387816858, guid: eaf0d7b6ac4e63147b056dfbb3e0023c, type: 3}
   spanPoint: {fileID: 332983590}
   freeLook: {fileID: 1585058104}
   roomCam: {fileID: 1923364698}
@@ -18366,7 +18366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a876fd32abd264e85078daeea6a139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!1 &2141382953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3189184956350728331, guid: 094fb3b36f251fe44989982880165174,
